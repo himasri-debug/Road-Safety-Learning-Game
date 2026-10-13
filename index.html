@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn traffic signs and road safety through an interactive quiz." />
+  <title>RoadWise — Road Safety Learning Game</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="RoadWise home"><span class="brand-icon">RW</span><span>Road<span class="brand-accent">Wise</span></span></a>
+    <nav aria-label="Main navigation"><a href="#learn">Learn signs</a><a href="#game">Play quiz</a></nav>
+    <a class="top-cta" href="#game">Start learning <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="home">
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="pulse-dot"></span> LEARN SMART. TRAVEL SAFE.</div>
+        <h1>Know the rules.<br /><span>Own the road.</span></h1>
+        <p class="hero-description">Make road safety second nature. Learn important traffic signs, test your knowledge, and build safer habits one question at a time.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#game">Play the quiz <span aria-hidden="true">→</span></a><a class="text-link" href="#learn">Explore traffic signs <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-stats"><div><strong>3</strong><span>Learning levels</span></div><div><strong>12</strong><span>Quiz questions</span></div><div><strong>100%</strong><span>Free to play</span></div></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of road safety signs">
+        <div class="art-sun"></div><div class="art-cloud cloud-one"></div><div class="art-cloud cloud-two"></div>
+        <div class="road-sign sign-stop"><span>STOP</span></div><div class="road-sign sign-warning"><span>!</span></div><div class="road-sign sign-speed"><span><b>40</b><small>km/h</small></span></div>
+        <div class="road"><div class="road-line"></div></div>
+        <div class="art-caption"><span class="caption-check">✓</span><span><b>Safer choices start here</b><small>Small knowledge. Big difference.</small></span></div>
+      </div>
+    </section>
+
+    <section class="learn-section section-wrap" id="learn">
+      <div class="section-heading"><div><div class="eyebrow">THE BASICS</div><h2>Know your traffic signs</h2><p>Recognize these common signs before you hit the road.</p></div><span class="section-pill">3 sign categories</span></div>
+      <div class="sign-grid">
+        <article class="sign-card"><div class="sign-visual sign-visual-stop"><span>STOP</span></div><div class="sign-card-copy"><span class="category category-danger">MANDATORY</span><h3>Stop</h3><p>Come to a complete stop and proceed only when it is safe.</p></div></article>
+        <article class="sign-card"><div class="sign-visual sign-visual-warning"><span>!</span></div><div class="sign-card-copy"><span class="category category-warning">WARNING</span><h3>General caution</h3><p>Be alert and watch for hazards or changing road conditions.</p></div></article>
+        <article class="sign-card"><div class="sign-visual sign-visual-speed"><span><b>40</b><small>km/h</small></span></div><div class="sign-card-copy"><span class="category category-info">INFORMATION</span><h3>Speed limit</h3><p>Keep your speed at or below the posted legal limit.</p></div></article>
+      </div>
+      <p class="disclaimer">Learning aid: sign designs and rules can vary by country. Always follow local traffic laws and posted signs.</p>
+    </section>
+
+    <section class="quiz-section" id="game">
+      <div class="section-wrap quiz-wrap">
+        <div class="section-heading quiz-heading"><div><div class="eyebrow">YOUR TURN</div><h2>Take the road safety challenge</h2><p>Choose a level and see how road-ready you are.</p></div><div class="best-score"><span class="trophy">★</span><span><small>YOUR BEST</small><strong id="bestScore">0 pts</strong></span></div></div>
+        <div class="quiz-shell" id="quizShell">
+          <div class="level-screen" id="levelScreen">
+            <div class="level-intro"><div class="mini-road-icon">↗</div><h3>Ready to roll?</h3><p>Select your level. Answer the questions, beat the timer, and earn your road safety badge.</p></div>
+            <div class="level-options">
+              <button class="level-card" data-level="beginner"><span class="level-emoji">🌱</span><span class="level-name">Beginner</span><span class="level-detail">Road safety basics</span><span class="level-meta">4 questions · 20 sec each</span><span class="level-arrow">→</span></button>
+              <button class="level-card" data-level="intermediate"><span class="level-emoji">🚦</span><span class="level-name">Intermediate</span><span class="level-detail">Signs & smart decisions</span><span class="level-meta">4 questions · 15 sec each</span><span class="level-arrow">→</span></button>
+              <button class="level-card" data-level="expert"><span class="level-emoji">🏁</span><span class="level-name">Expert</span><span class="level-detail">Think like a safe driver</span><span class="level-meta">4 questions · 12 sec each</span><span class="level-arrow">→</span></button>
+            </div>
+          </div>
+          <div class="question-screen hidden" id="questionScreen" aria-live="polite">
+            <div class="quiz-topline"><span class="question-count" id="questionCount">QUESTION 1 / 4</span><span class="timer"><span class="timer-icon">◷</span><span id="timerText">20</span> sec</span></div>
+            <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="question-content"><div class="question-symbol" id="questionSymbol">🛑</div><h3 id="questionText">What should you do at a STOP sign?</h3><p id="questionHint">Choose the safest answer.</p><div class="answer-list" id="answerList"></div><div class="feedback hidden" id="feedback" role="status"></div></div>
+            <div class="quiz-footer"><span id="levelLabel">BEGINNER LEVEL</span><button class="button button-primary hidden" id="nextButton">Next question →</button></div>
+          </div>
+          <div class="result-screen hidden" id="resultScreen" aria-live="polite">
+            <div class="result-medal" id="resultMedal">🏆</div><div class="eyebrow">CHALLENGE COMPLETE</div><h3 id="resultTitle">Great driving!</h3><p id="resultMessage">You're building safer habits.</p><div class="score-ring"><strong id="finalScore">0</strong><span>POINTS</span></div><div class="result-stats"><div><strong id="correctCount">0/4</strong><span>Correct answers</span></div><div><strong id="accuracy">0%</strong><span>Accuracy</span></div><div><strong id="earnedBadge">Rookie</strong><span>Your badge</span></div></div><div class="result-actions"><button class="button button-primary" id="retryButton">Play again ↻</button><button class="button button-secondary" id="levelsButton">Choose another level</button></div><p class="result-note">Keep learning. Safe roads begin with informed choices.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tips-section section-wrap"><div class="tips-heading"><div class="eyebrow">REMEMBER THIS</div><h2>Small habits. Safer journeys.</h2><p>Keep these essentials in mind every time you travel.</p></div><div class="tips-grid"><div class="tip-item"><span>01</span><div><h3>Buckle up</h3><p>Wear your seat belt on every trip, even short ones.</p></div></div><div class="tip-item"><span>02</span><div><h3>Put your phone away</h3><p>Never text or handle a phone while driving.</p></div></div><div class="tip-item"><span>03</span><div><h3>Respect speed limits</h3><p>Adjust your speed to the road, weather, and traffic.</p></div></div><div class="tip-item"><span>04</span><div><h3>Look out for everyone</h3><p>Watch carefully for pedestrians, cyclists, and children.</p></div></div></div></section>
+  </main>
+
+  <footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-icon">RW</span><span>Road<span class="brand-accent">Wise</span></span></a><p>Learn today. Make safer choices tomorrow.</p><span class="footer-copy">© <span id="year"></span> RoadWise Learning Game</span></footer>
+</body>
+</html>
